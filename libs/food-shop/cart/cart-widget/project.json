@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/food-shop/cart/cart-widget/src",
+  "prefix": "food-shop-architecture-workshop",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/food-shop/cart/cart-widget"
+      ],
+      "options": {
+        "jestConfig": "libs/food-shop/cart/cart-widget/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/food-shop/cart/cart-widget/**/*.ts",
+          "libs/food-shop/cart/cart-widget/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

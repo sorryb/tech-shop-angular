@@ -1,0 +1,126 @@
+<div class='lg:grid lg:grid-cols-[minmax(0,_100%)_minmax(0,_100%)] lg:gap-x-8 lg:h-full '>
+  <div class='lg:overflow-y-scroll relative pt-[40px] mt-5 ml-4'>
+    <div class='absolute top-0 left-0 w-full h-[40px]'>
+      <h2 class='text-lg font-medium text-gray-900'>Contact information</h2>
+    </div>
+    <div [formGroup]='checkoutFormGroup' class='mt-4'>
+      <mat-form-field appearance='outline' class='w-full'>
+        <mat-label>Name</mat-label>
+        <input formControlName='name' matInput placeholder='Ex. Jhon Doe' type='text'>
+        <mat-error *ngIf="checkoutFormGroup.get('name')?.hasError('required') ">
+          Please enter your name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance='outline' class='w-full'>
+        <mat-label>Table</mat-label>
+        <mat-select disableOptionCentering formControlName='table' panelClass='custom-select'>
+          <mat-option *ngFor='let topping of [1,2,3,4,5,6,7,8,9]' [value]='topping'>{{topping}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="checkoutFormGroup.get('table')?.hasError('required') ">
+          Please select a table
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance='outline' class='w-full mb-5'>
+        <mat-label>Leave a comment</mat-label>
+        <textarea formControlName='comment' matInput placeholder='Ex. It makes me feel...'></textarea>
+      </mat-form-field>
+    </div>
+    <app-input-radio-card
+      (inputRadioCardModelChanged)='handlePaymentMethodChange($event)'
+      [inputRadioCardModel]='paymentMethodCards'
+      [title]='paymentMethodTitle'>
+    </app-input-radio-card>
+  </div>
+  <div class='grid grid-rows-[minmax(0,_max-content)_minmax(220px,_220px)] overflow-y-hidden mt-5 ml-4 mr-4 '>
+    <div class='lg:overflow-y-scroll relative pt-[40px]'>
+      <div class='absolute top-0 left-0 w-full h-[40px]'>
+        <h2 class='text-lg font-medium text-gray-900'>Cart details</h2>
+      </div>
+      <ul class='pt-4 h-full lg:overflow-y-scroll'>
+        <ng-container *ngFor='let productCart of cartProducts'>
+          <li class='flex items-start pb-4 space-x-4 '>
+            <img [src]='productCart.product.img'
+                 alt='Product image' class='flex-none w-[120px] h-[120px] rounded-md object-center object-cover' />
+            <div class='flex-auto space-y-1 h-full mt-auto mb-auto'>
+              <h3 class='text-lg'>{{productCart.product.name}}</h3>
+              <div class='flex flex-row gap-2 text-gray-500 text-sm font-normal'>
+                <ng-container *ngIf='productCart.product.ingredients'>
+                  {{productCart.product.ingredients.join(', ')}}
+                </ng-container>
+              </div>
+              <div class='text-gray-800 text-sm flex flex-row'>
+                <div class=' mt-2'>
+                  <div class='flex flex-row  w-full rounded-lg relative bg-transparent'>
+                    <button (click)='updateQuantity(productCart.product, productCart.quantity - 1)'
+                            class='bg-gray-200 text-gray-800 !min-w-[20px] !h-[30px] !w-[30px] !rounded-tr-none !rounded-br-none !p-0 !leading-[10px]'
+                            mat-button>
+                      <span class='leading-[30px]'>-</span>
+                    </button>
+                    <div
+                      class='bg-gray-300 text-gray-800 min-w-[30px] flex items-center justify-center text-xs font-medium !h-[30px]'>{{productCart.quantity}}</div>
+                    <button (click)='updateQuantity(productCart.product, productCart.quantity + 1)'
+                            class='bg-gray-200 text-gray-800 !min-w-[30px] !h-[30px] !w-[30px] !rounded-tl-none !rounded-bl-none !p-0 !leading-[30px]'
+                            mat-button>
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class='mt-2 ml-2'>
+                  <button (click)='removeProduct.emit(productCart)' class='bg-gray-200 text-gray-800 !min-w-[20px] !h-[30px] !w-[30px] !p-0 !leading-[10px]'
+                          mat-button
+                          matTooltip='Remove product'>
+                    <mat-icon class='!h-[12px]' svgIcon='trash-light'></mat-icon>
+                  </button>
+                </div>
+
+
+              </div>
+            </div>
+            <div class='mt-auto mb-auto'>
+              <p class='text-end flex-none  text-gray-800 text-sm text-gray-500 font-normal'>
+                ${{productCart.product.price}}</p>
+              <p class='text-end flex-none  text-gray-800 text-sm text-gray-500 font-normal'>
+                x {{productCart.quantity}}</p>
+              <p class='text-end flex-none  text-gray-800 whitespace-nowrap font-semibold mt-2'>
+                ${{productCart.quantity * productCart.product.price | number : '1.2-2'}}</p>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <ng-container *ngIf='orderPaymentSummaryExtraFee'>
+      <div>
+        <dl class='border-t border-gray-200 py-2 space-y-1.5 '>
+          <div class='flex items-center justify-between text-gray-500'>
+            <dt class='text-sm'>Subtotal</dt>
+            <dd class='text-sm '>${{orderPaymentSummaryExtraFee.subtotal | number : '1.2-2'}}</dd>
+          </div>
+          <div class='flex items-center justify-between text-gray-500'>
+            <dt class='text-sm'>Service charge ({{orderPaymentSummaryExtraFee.serviceChargePercentage}}%)</dt>
+            <dd class='text-sm  '>${{orderPaymentSummaryExtraFee.serviceCharge | number : '1.2-2'}}</dd>
+          </div>
+          <div class='flex items-center justify-between text-gray-500'>
+            <dt class='text-sm'>Payment method</dt>
+            <dd class='text-sm  '>${{orderPaymentSummaryExtraFee.paymentFee}}</dd>
+          </div>
+          <div class='flex items-center justify-between text-gray-500'>
+            <dt class='text-sm'>Vat Rate ({{orderPaymentSummaryExtraFee.vatRatePercentage}}%)</dt>
+            <dd class='text-sm  '>${{orderPaymentSummaryExtraFee.vatRate | number : '1.2-2'}}</dd>
+          </div>
+
+          <div class='flex items-center justify-between border-t border-b border-gray-200 pt-2 pb-2'>
+            <dt class=' font-medium'>Total</dt>
+            <dd class=' font-medium text-gray-900'>${{orderPaymentSummaryExtraFee.total | number : '1.2-2'}}</dd>
+          </div>
+        </dl>
+        <div class='pt-2 '>
+          <button
+            (click)='submitOrder()'
+            class='bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded w-full flex flex-row justify-center'>
+            Confirm order
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

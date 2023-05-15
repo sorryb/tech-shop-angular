@@ -1,0 +1,31 @@
+<app-dom-portal [selector]="'#rightHeaderId'">
+  <button mat-button (click)="reloadOrders()" class="bg-gray-800 text-white">Get new orders</button>
+</app-dom-portal>
+
+<div class="h-full pt-5">
+  <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="handleFilter($event)">
+    <mat-tab label="All orders">
+    </mat-tab>
+    <mat-tab label="New">
+    </mat-tab>
+    <mat-tab label="Accepted">
+    </mat-tab>
+    <mat-tab label="Processing">
+    </mat-tab>
+    <mat-tab label="Canceled">
+    </mat-tab>
+    <mat-tab label="Delivered">
+    </mat-tab>
+  </mat-tab-group>
+  <ng-container *ngIf="orders$ | async as ordersState">
+    <div class="h-[calc(100%-53px)] overflow-y-scroll">
+      <app-order-table
+        [orders]="ordersState.orders.domain"
+        [showOrdersStatus]="selectedIndex === 0"
+        (sortChanged)="handleSortChanged($event)"
+        (orderStatusChanged)="updateOrderStatus($event)"
+      >
+      </app-order-table>
+    </div>
+  </ng-container>
+</div>

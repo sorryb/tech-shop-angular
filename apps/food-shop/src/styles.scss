@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@angular/cdk/overlay-prebuilt.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+
+  button {
+    letter-spacing: 0.02em;
+  }
+}
+
+.custom-select {
+  margin-top: 30px;
+  min-width: calc(100% + 16px) !important;
+  margin-left: 8px;
+}
+
+.mat-step-header .mat-step-icon {
+  @apply bg-gray-800;
+  @apply text-white;
+}

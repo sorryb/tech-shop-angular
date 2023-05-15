@@ -1,0 +1,31 @@
+
+.no-padding-dialog {
+  .mat-dialog-content {
+    max-height: initial;
+  }
+
+  mat-dialog-content {
+    @apply p-0;
+    @apply m-0;
+  }
+
+  mat-dialog-container {
+    padding: 0;
+    @apply ml-2;
+    @apply mr-2;
+  }
+}
+
+.custom-snackbar {
+  @apply bg-gray-800;
+  @apply text-white;
+  border-radius: 12px !important;
+  max-width: 500px !important;
+}
+
+
+.mat-tooltip {
+  @apply bg-gray-700;
+  @apply text-white;
+  @apply tracking-normal;
+}

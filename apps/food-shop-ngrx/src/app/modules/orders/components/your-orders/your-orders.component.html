@@ -1,0 +1,15 @@
+<app-dom-portal [selector]="'#headerId'">
+  <div class="flex flex-row items-center">
+    <button mat-icon-button class="text-gray-800" routerLink="/">
+      <mat-icon svgIcon="arrow-left-solid"></mat-icon>
+    </button>
+    <h1 class="text-gray-800 text-3xl font-extrabold tracking-tight sm:text-4xl">Your orders</h1>
+  </div>
+
+</app-dom-portal>
+
+<div class="mx-auto lg:max-w-7xl h-full overflow-y-scroll max-h-full">
+  <ng-container *ngIf="ordersState$ | async as ordersState">
+    <app-order-card-list [orders]="ordersState.domain" (orderClicked)="selectOrder($event)"></app-order-card-list>
+  </ng-container>
+</div>

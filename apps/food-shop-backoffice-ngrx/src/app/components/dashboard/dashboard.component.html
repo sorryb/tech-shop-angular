@@ -1,0 +1,36 @@
+<app-dom-portal [selector]="'#headerId'">Orders</app-dom-portal>
+
+<app-dom-portal [selector]="'#rightHeaderId'">
+  <div class="flex flex-row gap-2">
+    <button (click)="reloadStats()" mat-stroked-button class=""><span class="font-medium">Reload stats</span></button>
+    <button (click)="reloadOrders()" mat-stroked-button class=""><span class="font-medium">Get new orders</span></button>
+  </div>
+
+</app-dom-portal>
+<div class="h-full pt-5 px-2 overflow-y-scroll
+      lg:overflow-hidden grid gap-4 lg:grid-rows-[minmax(220px,_max-content)_minmax(0,_max-content)]">
+  <div *ngIf="stats$ | async as stats">
+    <div *ngIf="stats.allDeliveredCanceledOrdersStats.length > 0">
+      <app-stats [statsRows]="stats.allDeliveredCanceledOrdersStats"></app-stats>
+    </div>
+    <div *ngIf="stats.newProcessingAcceptedOrdersStats.length > 0">
+      <app-stats [statsRows]="stats.newProcessingAcceptedOrdersStats"></app-stats>
+    </div>
+  </div>
+
+  <div class="h-full lg:overflow-y-scroll">
+    <ng-container *ngIf="ordersState$ | async as ordersState">
+      <app-order-table
+        [orders]="ordersState.orders.domain"
+        [showOrdersStatus]="true"
+        (orderStatusChanged)="updateOrderStatus($event)"
+        (sortChanged)="handleSortChange($event)"
+        [sort]="ordersState.sort"
+        [paginationConfig]="ordersState.pagination"
+        (pageChanged)="handlePageChanged($event)">
+      </app-order-table>
+    </ng-container>
+
+  </div>
+</div>
+

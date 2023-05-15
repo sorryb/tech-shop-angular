@@ -1,0 +1,58 @@
+<ng-container *ngIf='products.length > 0 else missingProducts'>
+  <div class='bg-white bg-gray-800 w-full h-full rounded-lg p-1.5'
+       style='display: grid;grid-template-rows: 50px 1fr 60px;'>
+    <div class='text-lg font-bold text-white px-2.5 py-2'>Shopping cart</div>
+    <div class='w-full px-2.5 overflow-y-scroll'>
+      <ul class='divide-y divide-gray-700' role='list'>
+        <li *ngFor='let item of products' class='py-2.5 flex items-center'>
+          <img [src]='item.product.img' class='flex-none w-20 h-20 rounded-lg '>
+          <div class='ml-4 flex-auto'>
+            <h3 class='font-medium text-white'>
+              <a>{{item.product.name}}</a>
+            </h3>
+            <div class='text-gray-300 text-sm flex flex-row'>Quantity :
+              <div class='h-5 ml-2'>
+                <div class='flex flex-row h-10 w-full rounded-lg relative bg-transparent'>
+                  <button (click)='updateQuantity(item.product, item.quantity - 1)'
+                          class='bg-gray-800 text-gray-300 !min-w-[20px] !h-[20px] !w-[20px] !rounded-tr-none !rounded-br-none !p-0 !leading-[10px]'
+                          mat-button>
+                    <span class='leading-[10px]'>-</span>
+                  </button>
+                  <div
+                    class='bg-gray-900 text-gray-300 min-w-[20px] flex items-center justify-center text-xs font-medium !h-[20px]'>{{item.quantity}}</div>
+                  <button (click)='updateQuantity(item.product, item.quantity + 1)'
+                          class='bg-gray-800 text-gray-300 !min-w-[20px] !h-[20px] w-[20px] !rounded-tl-none !rounded-bl-none !p-0 !leading-[10px]'
+                          mat-button>
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p class='text-gray-300 text-sm'>Price : {{item.product.price}}</p>
+          </div>
+          <button (click)='removeProduct(item)' class='text-white' mat-icon-button matTooltip='Remove item'>
+            <mat-icon svgIcon='trash-light'></mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class='p-2.5'>
+      <button (click)='onNavigateToCheckout()' class='w-full text-white font-bold bg-gray-800' mat-button>Checkout
+      </button>
+    </div>
+  </div>
+</ng-container>
+<ng-template #missingProducts>
+  <div
+    class='bg-white bg-gray-800 text-white w-full h-full rounded-lg p-1.5 items-center flex flex-col justify-center h-[160px]'>
+    <div class='font-medium text-lg mb-2 pt-4'>Empty cart</div>
+    <div class='text-base text-sm text-center text-gray-300 pl-5 pr-5'>Please add new products to cart in order to
+      proceed with the order
+    </div>
+    <div class='p-2.5 w-full'>
+      <button (click)='onAddProducts()' class='w-full text-white font-bold bg-gray-800' mat-button>Add products</button>
+    </div>
+  </div>
+</ng-template>
+

@@ -1,0 +1,13 @@
+<div class='h-10'>
+  <div class='flex flex-row h-10 w-full rounded-lg relative bg-transparent'>
+    <button (click)='updateValue(value - 1)' class='bg-gray-200 !min-w-[20px] !rounded-tr-none !rounded-br-none '
+            mat-button>
+      <mat-icon class='!h-[20px]' svgIcon='minus-solid'></mat-icon>
+    </button>
+    <div class='bg-gray-200 min-w-[50px] flex items-center justify-center text-lg font-medium'>{{value}}</div>
+    <button (click)='updateValue(value + 1)' class='bg-gray-200 !min-w-[20px] !rounded-tl-none !rounded-bl-none '
+            mat-button>
+      <mat-icon class='!h-[20px]' svgIcon='plus-solid'></mat-icon>
+    </button>
+  </div>
+</div>

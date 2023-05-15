@@ -1,0 +1,19 @@
+<button
+  #cartButton
+  (click)='showCartDetails()'
+  [matBadgeHidden]='cartQuantity === 0'
+  [matBadge]='cartQuantity' mat-icon-button matBadgeOverlap>
+  <mat-icon class='text-gray-800' svgIcon='basket'></mat-icon>
+</button>
+
+<ng-template #cartList>
+  <app-cart-list
+    (navigateToCheckout)='navigateToCheckoutPage()'
+    (navigateToProducts)='navigateToProductsPage()'
+    (removeProductFromCart)='handleRemoveProduct($event)'
+    (updateProductQuantity)='handleUpdateQuantity($event)'
+    [products]='cartProducts'
+    class='w-full'>
+  </app-cart-list>
+
+</ng-template>

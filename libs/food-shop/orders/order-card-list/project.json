@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/food-shop/orders/order-card-list/src",
+  "prefix": "food-shop-architecture-workshop",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/food-shop/orders/order-card-list"],
+      "options": {
+        "jestConfig": "libs/food-shop/orders/order-card-list/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/food-shop/orders/order-card-list/**/*.ts",
+          "libs/food-shop/orders/order-card-list/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

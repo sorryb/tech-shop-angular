@@ -1,0 +1,60 @@
+<div class='mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-1 sm:gap-x-2 px-2'>
+  <ng-container *ngFor='let order  of orders'>
+
+    <div
+      class='relative transition-all hover:bg-gray-50 hover:shadow-xl bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none'
+      (click)='orderClicked.emit(order)'>
+      <div class='flex-1 flex w-full'>
+        <div class='flex flex-col w-full'>
+          <span class='block text-lg tracking-tight font-semibold  text-orange-500'>#{{order.id}}  <span
+            class='text-gray-800'> - Table {{order.table}}</span></span>
+          <div class='flex flex-row items-center'>
+            <div class='flex items-center text-md text-gray-500 font-normal mr-1'>Name:</div>
+            <div class='text-md font-medium '>{{order.name}}</div>
+          </div>
+          <div class='flex flex-row items-center'>
+            <div class='flex items-center text-md text-gray-500 font-normal mr-1'>Comments:</div>
+            <div class='text-md font-medium '>{{order.comment}}</div>
+          </div>
+
+          <div>
+            <div class='flex items-center text-md font-medium mt-2'>Orders:</div>
+            <div class='flex flex-row  mb-1 gap-2 overflow-y-scroll'>
+              <div *ngFor='let prod of order.orderedProducts' class='shrink-0'>
+                <img [src]='prod.product.img'
+                     class=' h-16 w-[100px] object-center object-cover cursor-pointer rounded-md ' />
+                <div class='text-xs mt-1 font-medium tracking-tight'>{{prod.product.name}}<span
+                  class='font-light'>(x{{prod.quantity}})</span></div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <ng-container>
+
+        <div class='absolute top-[15px] right-[15px]'>
+          <div
+            [ngClass]="{
+            'bg-red-100 text-red-700':order.orderStatus === ORDER_STATUS.ORDER_CANCELED,
+            'bg-gray-100 text-gray-700':order.orderStatus === ORDER_STATUS.ORDER_NEW,
+            'bg-yellow-100 text-yellow-700':order.orderStatus === ORDER_STATUS.ORDER_ACCEPTED,
+            'bg-orange-100 text-orange-700':order.orderStatus === ORDER_STATUS.ORDER_PROCESSING,
+            'bg-green-100 text-green-700':order.orderStatus === ORDER_STATUS.ORDER_DELIVERED
+            }"
+            class='  py-1.5 px-2 text-xs font-semibold tracking-wide rounded-md'>
+            {{order.orderStatus}}
+          </div>
+        </div>
+        <div class='absolute right-[15px] bottom-[15px]'>
+          <div class='bg-gray-800 py-1 px-2 rounded text-white text-lg font-semibold'>
+            ${{order.orderPaymentSummaryExtraFee.total}}</div>
+        </div>
+
+
+      </ng-container>
+      <div class='absolute -inset-px rounded-lg border-[3px] pointer-events-none' aria-hidden='true'></div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,19 @@
+<ng-container *ngIf="order$ | async as orderState">
+
+  <app-dom-portal [selector]="'#headerId'">
+
+    <div class="flex flex-row items-center">
+      <button mat-icon-button class="text-gray-800" routerLink="/orders">
+        <mat-icon svgIcon="arrow-left-solid"></mat-icon>
+      </button>
+      <h1 class="text-gray-800 text-3xl font-extrabold tracking-tight sm:text-4xl">#{{orderState.domain?.id}}</h1>
+    </div>
+  </app-dom-portal>
+
+  <div class=" mx-auto lg:max-w-7xl h-full max-h-full overflow-y-scroll">
+    <div *ngIf="orderState.requestStatus.status === 'COMPLETED' && orderState.domain !== undefined">
+      <app-order-details [order]="orderState.domain"></app-order-details>
+    </div>
+
+  </div>
+</ng-container>

@@ -1,0 +1,98 @@
+<div class='
+  lg:grid lg:grid-rows-[minmax(0,_max-content)_minmax(330px,_330px)]
+   mx-auto lg:max-w-7xl h-full px-4 overflow-y-scroll'>
+
+  <div class='overflow-y-scroll'>
+    <ng-container *ngFor='let productCart of order.orderedProducts; let first=first'>
+      <li class='flex items-start pb-4 space-x-4 mx-2' [ngClass]="{'mt-4':first}">
+        <img [src]='productCart.product.img' class='flex-none w-[120px] h-[120px] rounded-md object-center object-cover'
+             alt='Product image' />
+        <div class='flex-auto space-y-1 h-full mt-auto mb-auto'>
+          <h3 class='text-lg'>{{productCart.product.name}}</h3>
+          <div class='flex flex-row gap-2 text-gray-500 text-sm font-normal'>
+            <ng-container *ngIf='productCart.product.ingredients'>
+              {{productCart.product.ingredients.join(', ')}}
+            </ng-container>
+          </div>
+        </div>
+        <div class='mt-auto mb-auto'>
+          <p class='text-end flex-none text-base text-gray-800 text-sm text-gray-500 font-normal'>
+            ${{productCart.product.price}}</p>
+          <p class='text-end flex-none text-base text-gray-800 text-sm text-gray-500 font-normal'>
+            x {{productCart.quantity}}</p>
+          <p class='text-end flex-none text-base text-gray-800 whitespace-nowrap font-semibold mt-2'>
+            ${{productCart.quantity * productCart.product.price | number : '1.2-2'}}</p>
+        </div>
+      </li>
+    </ng-container>
+  </div>
+
+  <div>
+    <app-order-status-bar [order]='order'></app-order-status-bar>
+    <div class='mt-4 mb-4'>
+      <div class='bg-gray-100 py-4 px-4 sm:px-6 sm:rounded-lg lg:px-4 lg:py-4 lg:grid lg:grid-cols-12 lg:gap-x-8'>
+        <dl class='grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7'>
+          <div>
+            <dt class='font-medium text-gray-900'>Billing details</dt>
+            <dd class='mt-3 text-gray-500'>
+              <span class='block'>Name : {{order.name}}</span>
+              <span class='block'>Table : {{order.table}}</span>
+              <span class='block'>Comment : {{order.comment}}</span>
+            </dd>
+          </div>
+          <div>
+            <dt class='font-medium text-gray-900'>Payment information</dt>
+            <div class='mt-3'>
+              <dd class='-ml-4 -mt-4 flex flex-wrap'>
+                <div class='ml-4 mt-4 flex-shrink-0'>
+
+                  <svg aria-hidden='true' width='36' height='24' viewBox='0 0 36 24' xmlns='http://www.w3.org/2000/svg'
+                       class='h-6 w-auto'>
+                    <rect width='36' height='24' rx='4' fill='#224DBA' />
+                    <path
+                      d='M10.925 15.673H8.874l-1.538-6c-.073-.276-.228-.52-.456-.635A6.575 6.575 0 005 8.403v-.231h3.304c.456 0 .798.347.855.75l.798 4.328 2.05-5.078h1.994l-3.076 7.5zm4.216 0h-1.937L14.8 8.172h1.937l-1.595 7.5zm4.101-5.422c.057-.404.399-.635.798-.635a3.54 3.54 0 011.88.346l.342-1.615A4.808 4.808 0 0020.496 8c-1.88 0-3.248 1.039-3.248 2.481 0 1.097.969 1.673 1.653 2.02.74.346 1.025.577.968.923 0 .519-.57.75-1.139.75a4.795 4.795 0 01-1.994-.462l-.342 1.616a5.48 5.48 0 002.108.404c2.108.057 3.418-.981 3.418-2.539 0-1.962-2.678-2.077-2.678-2.942zm9.457 5.422L27.16 8.172h-1.652a.858.858 0 00-.798.577l-2.848 6.924h1.994l.398-1.096h2.45l.228 1.096h1.766zm-2.905-5.482l.57 2.827h-1.596l1.026-2.827z'
+                      fill='#fff' />
+                  </svg>
+                </div>
+                <div class='ml-4 mt-4'>
+                  <p class='text-gray-900'>Ending with 1214</p>
+                  <p class='text-gray-600'>Expires 07 / 25</p>
+                </div>
+              </dd>
+            </div>
+          </div>
+        </dl>
+
+        <dl class='mt-4 divide-y divide-gray-200 lg:mt-0 lg:col-span-5'>
+          <div class='pb-2 flex items-center justify-between text-xs'>
+            <dt class=' text-gray-600'>Subtotal</dt>
+            <dd class=' font-medium text-gray-600'>
+              ${{order.orderPaymentSummaryExtraFee.subtotal  | number : '1.2-2'}}</dd>
+          </div>
+          <div class='py-2 flex items-center justify-between text-xs'>
+            <dt class='text-gray-600'>Service Charge ({{order.orderPaymentSummaryExtraFee.serviceChargePercentage}}%)
+            </dt>
+            <dd class='font-medium text-gray-600'>
+              ${{order.orderPaymentSummaryExtraFee.serviceCharge  | number : '1.2-2'}}</dd>
+          </div>
+          <div class='py-2 flex items-center justify-between text-xs'>
+            <dt class='text-gray-600'>Payment fee</dt>
+            <dd class='font-medium text-gray-600'>
+              ${{order.orderPaymentSummaryExtraFee.paymentFee  | number : '1.2-2'}}</dd>
+          </div>
+          <div class='py-2 flex items-center justify-between text-xs'>
+            <dt class='text-gray-600'>Vat Rate ({{order.orderPaymentSummaryExtraFee.vatRatePercentage}}%)</dt>
+            <dd class='font-medium text-gray-600'>
+              ${{order.orderPaymentSummaryExtraFee.vatRate  | number : '1.2-2'}}</dd>
+          </div>
+          <div class='pt-2 flex items-center justify-between text-sm'>
+            <dt class='font-medium text-gray-800'>Total</dt>
+            <dd class='font-medium text-gray-800'>${{order.orderPaymentSummaryExtraFee.total}}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+
+</div>

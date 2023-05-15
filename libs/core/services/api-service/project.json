@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/core/services/api-service/src",
+  "prefix": "food-shop-architecture-workshop",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/core/services/api-service"
+      ],
+      "options": {
+        "jestConfig": "libs/core/services/api-service/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/services/api-service/**/*.ts",
+          "libs/core/services/api-service/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

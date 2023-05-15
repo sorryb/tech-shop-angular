@@ -1,0 +1,68 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@food-shop-architecture-workshop/core/model": ["libs/core/model/src/index.ts"],
+      "@food-shop-architecture-workshop/core/services/api-service": ["libs/core/services/api-service/src/index.ts"],
+      "@food-shop-architecture-workshop/core/shared/store": ["libs/core/shared/store/src/index.ts"],
+      "@food-shop-architecture-workshop/core/theme": ["libs/core/theme/src/index.ts"],
+      "@food-shop-architecture-workshop/food-shop-backoffice/orders/order-status-table": [
+        "libs/food-shop-backoffice/orders/order-status-table/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop-backoffice/orders/stats": [
+        "libs/food-shop-backoffice/orders/stats/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/cart/cart-utility": ["libs/food-shop/cart/cart-utility/src/index.ts"],
+      "@food-shop-architecture-workshop/food-shop/cart/cart-widget": ["libs/food-shop/cart/cart-widget/src/index.ts"],
+      "@food-shop-architecture-workshop/food-shop/category/category-summary": [
+        "libs/food-shop/category/category-summary/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/checkout/checkout-details": [
+        "libs/food-shop/checkout/checkout-details/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/favorite/favorite-widget": [
+        "libs/food-shop/favorite/favorite-widget/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/orders/order-card-list": [
+        "libs/food-shop/orders/order-card-list/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/orders/order-details": [
+        "libs/food-shop/orders/order-details/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/orders/orders-widget": [
+        "libs/food-shop/orders/orders-widget/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/product/product-details": [
+        "libs/food-shop/product/product-details/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/food-shop/product/product-list": [
+        "libs/food-shop/product/product-list/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/shared/components/dom-portal": [
+        "libs/shared/components/dom-portal/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/shared/components/input-number-button": [
+        "libs/shared/components/input-number-button/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/shared/components/input-radio-card": [
+        "libs/shared/components/input-radio-card/src/index.ts"
+      ],
+      "@food-shop-architecture-workshop/shared/pipes": ["libs/shared/pipes/src/index.ts"],
+      "@food-shop-architecture-workshop/shared/store": ["libs/shared/store/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

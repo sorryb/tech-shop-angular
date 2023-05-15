@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+}
+
+tr.row-detail {
+  height: 0;
+}
+
+tr.table-row:not(.table-row-expanded):hover {
+  background: whitesmoke;
+}
+
+tr.table-row:not(.table-row-expanded):active {
+  background: #efefef;
+}
+
+.table-row td {
+  border-bottom-width: 0;
+}
+
+.row-expanded-details {
+  overflow: hidden;
+  display: flex;
+}
+
+.cdk-column-orderId {
+  // width: 120px;
+}
+
+.cdk-column-status {
+  width: 170px;
+}
+
+.cdk-column-orderDate {
+  //   width: 150px !important;
+}
+
+.cdk-column-expand {
+  // width: 80px;
+}
+

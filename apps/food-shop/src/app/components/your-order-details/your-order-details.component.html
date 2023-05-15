@@ -1,0 +1,16 @@
+<ng-container *ngIf='order$ | async as order'>
+
+  <app-dom-portal [selector]="'#headerId'">
+
+    <div class='flex flex-row items-center'>
+      <button mat-icon-button class='text-gray-800' routerLink='/orders'>
+        <mat-icon svgIcon='arrow-left-solid'></mat-icon>
+      </button>
+      <h1 class='text-gray-800 text-3xl font-extrabold tracking-tight sm:text-4xl'>#{{order.id}}</h1>
+    </div>
+  </app-dom-portal>
+
+  <div class=' mx-auto lg:max-w-7xl h-full max-h-full overflow-y-scroll'>
+    <app-order-details [order]='order'></app-order-details>
+  </div>
+</ng-container>

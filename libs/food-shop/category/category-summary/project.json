@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/food-shop/category/category-summary/src",
+  "prefix": "food-shop-architecture-workshop",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/food-shop/category/category-summary"
+      ],
+      "options": {
+        "jestConfig": "libs/food-shop/category/category-summary/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/food-shop/category/category-summary/**/*.ts",
+          "libs/food-shop/category/category-summary/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,108 @@
+@use '@angular/material' as mat;
+
+$primary-palette: (
+  50: theme('colors.orange.50'),
+  100: theme('colors.orange.100'),
+  200: theme('colors.orange.200'),
+  300: theme('colors.orange.300'),
+  400: theme('colors.orange.400'),
+  500: theme('colors.orange.500'),
+  600: theme('colors.orange.600'),
+  700: theme('colors.orange.700'),
+  800: theme('colors.orange.800'),
+  900: theme('colors.orange.900'),
+  A100: theme('colors.orange.100'),
+  A200: theme('colors.orange.200'),
+  A400: theme('colors.orange.400'),
+  A700: theme('colors.orange.700'),
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: black,
+    600: black,
+    700: black,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+$error-palette: (
+  50: theme('colors.red.50'),
+  100: theme('colors.red.100'),
+  200: theme('colors.red.200'),
+  300: theme('colors.red.300'),
+  400: theme('colors.red.400'),
+  500: theme('colors.red.500'),
+  600: theme('colors.red.600'),
+  700: theme('colors.red.700'),
+  800: theme('colors.red.800'),
+  900: theme('colors.red.900'),
+  A100: theme('colors.red.100'),
+  A200: theme('colors.red.200'),
+  A400: theme('colors.red.400'),
+  A700: theme('colors.red.700'),
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: black,
+    600: black,
+    700: black,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: black,
+    A700: black,
+  )
+);
+
+$typography-config: mat.define-typography-config(
+  $font-family: 'Inter, "Helvetica Neue", sans-serif',
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 400), // Line-height must be unit-less fraction of the font-size.
+  /*$input: mat.define-typography-level(inherit, 1.125, 400, $letter-spacing: -0.005em)*/
+);
+
+$primary: mat.define-palette($primary-palette, A400, A100, A400);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn: mat.define-palette($error-palette, A700, A100, A400);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  ),
+  typography: $typography-config
+));
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($light-theme);

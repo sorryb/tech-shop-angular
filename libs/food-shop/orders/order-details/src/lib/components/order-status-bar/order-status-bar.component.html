@@ -1,0 +1,58 @@
+<div class='border-t border-gray-200 py-4 '>
+
+  <p class='text-sm font-semibold  text-gray-900'>
+    <ng-container [ngSwitch]='order.orderStatus'>
+      <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_NEW'>
+        Submitted on <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_ACCEPTED'>
+        Accepted on <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_DELIVERED'>
+        Delivered on <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_PROCESSING'>
+        Processed on <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_CANCELED'>
+        Canceled on <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchDefault>Missing status</ng-container>
+    </ng-container>
+
+    <ng-template #templateRef>
+      {{order.orderDateUnix | unixMoment | moment : 'ddd MMM YYYY hh:mm'}}
+    </ng-template>
+  </p>
+  <div class='mt-4' aria-hidden='true'>
+    <div class='bg-gray-200 rounded-full overflow-hidden'>
+      <div class='h-2 rounded-full'
+           [ngStyle]="{'width': 'calc('+barNumberWidth+' * 100%)'}"
+           [ngClass]="{
+           'bg-orange-600': order.orderStatus !== ORDER_STATUS.ORDER_CANCELED && order.orderStatus !== ORDER_STATUS.ORDER_DELIVERED,
+           'bg-red-500': order.orderStatus === ORDER_STATUS.ORDER_CANCELED,
+           'bg-green-500': order.orderStatus === ORDER_STATUS.ORDER_DELIVERED
+           }"
+      ></div>
+    </div>
+    <div class='hidden sm:grid grid-cols-4 text-sm font-medium text-gray-600 mt-4'>
+      <div [ngClass]="{'text-orange-500': order.orderStatus === ORDER_STATUS.ORDER_NEW}">Order placed</div>
+      <div [ngClass]="{'text-orange-500': order.orderStatus === ORDER_STATUS.ORDER_ACCEPTED}" class='text-center'>Order
+        accepted
+      </div>
+      <div [ngClass]="{'text-orange-500': order.orderStatus === ORDER_STATUS.ORDER_PROCESSING}" class='text-center'>
+        Order Processing
+      </div>
+      <div
+        [ngClass]="{'text-green-600': order.orderStatus === ORDER_STATUS.ORDER_DELIVERED, 'text-red-500': order.orderStatus === ORDER_STATUS.ORDER_CANCELED}"
+        class='text-right'>
+        <ng-container *ngIf='order.orderStatus === ORDER_STATUS.ORDER_CANCELED else delivered'>
+          Order Canceled
+        </ng-container>
+        <ng-template #delivered>
+          Order Delivered
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

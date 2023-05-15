@@ -1,0 +1,54 @@
+<mat-dialog-content>
+  <div class='bg-white max-w-[584px] pb-5'>
+
+    <div class='flex items-center w-full justify-center relative'>
+      <div class='flex-none w-full '>
+        <img [src]='product.img' class='w-full h-[368px] object-center object-cover'>
+        <button (click)='close()' class='!absolute right-[16px] top-[16px] !text-white' mat-icon-button>
+          <mat-icon svgIcon='close'></mat-icon>
+        </button>
+        <button (click)='favoriteClicked()'
+                [ngClass]="favorite ? '!text-red-500':'!text-gray-800'"
+                class='!absolute right-[16px] bottom-[16px] !bg-white ' mat-icon-button>
+          <mat-icon [svgIcon]="favorite ? 'heart-solid':'heart-light'"></mat-icon>
+        </button>
+      </div>
+
+    </div>
+
+    <div class='mt-4 text-center '>
+      <h1 class='text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl'>{{product.name}}</h1>
+    </div>
+
+    <div class='flex items-center pl-2 pr-2'>
+      <p class='ml-2 text-base font-medium text-gray-600 text-center w-full mt-5'>
+        <ng-container *ngIf='product.ingredients'>
+          {{product.ingredients.join(', ')}}
+        </ng-container>
+      </p>
+    </div>
+
+    <div class='mt-4 space-y-6 pl-5 pr-5'>
+      <p class=' text-gray-500'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias blanditiis
+        consequatur delectus dolor mollitia recusandae reiciendis ullam voluptate! Aperiam deleniti enim iure
+        laboriosam pariatur. Aliquid deleniti
+        dolor eius eligendi, error esse, fugit illo magni, non pariatur sequi sit voluptates.</p>
+    </div>
+
+    <div class='flex flex-row items-center pl-5 pr-5 mt-5 gap-5'>
+
+      <app-input-number-button
+        (valueChanged)='handleQuantityChanged($event)'
+        [minValue]='1'
+        [value]='quantity'></app-input-number-button>
+
+      <button
+        (click)='addToBag()'
+        class='bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded w-full flex flex-row justify-between' matRipple>
+        <span>Add to cart</span>
+        <span>${{product.price}}</span>
+      </button>
+    </div>
+
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,342 @@
+<ng-container *ngIf='{value: isSmallScreen$ | async } as isSmallScreen'>
+  <table
+    (matSortChange)='sortData($event)'
+    [dataSource]='orders'
+    [matSortActive]="sort === undefined ? '' : sort.active"
+    [matSortDirection]="sort === undefined ? '': sort.direction"
+    class='w-full rounded shadow' mat-table matSort multiTemplateDataRows>
+    <ng-container matColumnDef='orderId'>
+      <th *matHeaderCellDef [ngClass]="{'!p-0' : isSmallScreen.value}"
+          mat-header-cell
+          mat-sort-header='id'>
+        <div *ngIf='!isSmallScreen.value' class='font-medium text-gray-800 text-sm'>
+          Order No.
+        </div>
+      </th>
+      <td *matCellDef='let element' [ngClass]="{'!p-2' : isSmallScreen.value}" mat-cell>
+        <div *ngIf='!isSmallScreen.value' class='font-medium text-gray-800  sm:text-sm'>
+          #{{element.id}}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='customer'>
+      <th *matHeaderCellDef mat-header-cell>
+        <div class='font-medium text-gray-800 text-sm'>
+          Customer
+        </div>
+      </th>
+      <td *matCellDef='let element' mat-cell>
+        <div class='text-base text-gray-800 text-xs tracking-tight sm:text-sm sm:tracking-normal'>
+          {{element.name}}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='price'>
+      <th *matHeaderCellDef mat-header-cell mat-sort-header='orderPaymentSummaryExtraFee.total'>
+        <div class='font-medium text-gray-800 text-sm'>
+          Price
+        </div>
+      </th>
+      <td *matCellDef='let element' mat-cell>
+        <div class='text-base text-gray-800 text-xs tracking-tight sm:text-sm sm:tracking-normal'>
+          ${{element.orderPaymentSummaryExtraFee.total  | number : '1.2-2'}}
+        </div>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='items'>
+      <th *matHeaderCellDef mat-header-cell>
+        <div class='font-medium text-gray-800 text-sm'>
+          Items
+        </div>
+      </th>
+      <td *matCellDef='let element' mat-cell>
+        <div class='text-base text-gray-800 text-xs tracking-tight sm:text-sm sm:tracking-normal'>
+          12
+        </div>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='orderDate'>
+      <th *matHeaderCellDef mat-header-cell mat-sort-header='orderDate'>
+        <div *ngIf='!isSmallScreen.value' class='font-medium text-gray-800 text-sm'>
+          Order date
+        </div>
+      </th>
+      <td *matCellDef='let element' mat-cell>
+        <div *ngIf='!isSmallScreen.value'
+             class='text-base text-gray-800 text-xs tracking-tight sm:text-sm sm:tracking-normal'>
+          {{element.orderDate | date : 'dd MMM YYYY hh:mm'}}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='status'>
+      <th *matHeaderCellDef mat-header-cell>
+        <div class='font-medium text-gray-800 text-sm'>
+          <ng-container *ngIf='showOrdersStatus else tableTemplate'>
+            Status
+          </ng-container>
+          <ng-template #tableTemplate>Table</ng-template>
+        </div>
+      </th>
+      <td *matCellDef='let element' mat-cell>
+
+        <ng-template #tableNumber>
+          Table {{element.table}}
+        </ng-template>
+
+        <div *ngIf='showOrdersStatus else tableNumber' class='flex flex-row items-start'>
+          <div
+            [ngClass]="{
+            'bg-red-100 text-red-600 border-red-600':element.orderStatus === ORDER_STATUS.ORDER_CANCELED,
+            'bg-gray-100 text-gray-600 border-gray-600 ':element.orderStatus === ORDER_STATUS.ORDER_NEW,
+            'bg-yellow-100 text-yellow-600 border-yellow-600':element.orderStatus === ORDER_STATUS.ORDER_ACCEPTED,
+            'bg-orange-100 text-orange-600 border-orange-600':element.orderStatus === ORDER_STATUS.ORDER_PROCESSING,
+            'bg-green-100 text-green-600 border-green-600 ':element.orderStatus === ORDER_STATUS.ORDER_DELIVERED
+            }"
+            class='py-1.5 px-2 text-xs font-light sm:font-semibold tracking-wide rounded-md border w-[150px] flex flex-row justify-center'>
+            <ng-container [ngSwitch]='element.orderStatus'>
+              <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_NEW'>
+                New order
+              </ng-container>
+              <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_ACCEPTED'>
+                Accepted order
+              </ng-container>
+              <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_DELIVERED'>
+                Delivered order
+              </ng-container>
+              <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_PROCESSING'>
+                Processing order
+              </ng-container>
+              <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_CANCELED'>
+                Canceled order
+              </ng-container>
+              <ng-container *ngSwitchDefault>Missing status</ng-container>
+            </ng-container>
+          </div>
+        </div>
+
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef='expand'>
+      <th *matHeaderCellDef aria-label='row actions' class='!p-0' mat-header-cell></th>
+      <td *matCellDef='let element' class='hidden lg:block !p-0' mat-cell>
+
+        <div class='flex flex-row justify-center items-center '>
+          <button
+            (click)='(expandedElement = expandedElement === element.id ? null : element.id); $event.stopPropagation()' aria-label='expand row'
+            mat-icon-button>
+            <mat-icon *ngIf='expandedElement !== element.id'>keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf='expandedElement === element.id'>keyboard_arrow_up</mat-icon>
+          </button>
+        </div>
+
+      </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef='expandedDetail'>
+      <td *matCellDef='let element' [attr.colspan]='columnsToDisplayWithExpand.length' mat-cell>
+        <div [@detailExpand]="element.id == expandedElement ? 'expanded' : 'collapsed'" class='row-expanded-details'>
+
+          <div class='w-full'>
+
+            <ng-container *ngFor='let productCart of element.orderedProducts; let first=first'>
+              <div [ngClass]="{'mt-4':first}" class='flex items-start pb-1 space-x-4 mx-2'>
+                <img [src]='productCart.product.img'
+                     alt='Product image' class='flex-none w-[50px] h-[50px] rounded-md object-center object-cover' />
+                <div class='flex-auto space-y-1 h-full '>
+                  <h3 class='text-lg'>{{productCart.product.name}}</h3>
+                  <div class='flex flex-row gap-2 text-gray-500 text-sm font-normal'>
+                    <ng-container *ngIf='productCart.product.ingredients'>
+                      {{productCart.product.ingredients.join(', ')}}
+                    </ng-container>
+                  </div>
+                </div>
+                <div>
+                  <div class='text-end flex-none text-base text-gray-800 text-xs text-gray-500 font-normal'>
+                    ${{productCart.product.price}}</div>
+                  <div class='text-end flex-none text-base text-gray-800 text-xs text-gray-500 font-normal'>
+                    x {{productCart.quantity}}</div>
+                  <div class='text-end flex-none text-base text-gray-800 whitespace-nowrap font-semibold'>
+                    ${{productCart.quantity * productCart.product.price | number : '1.2-2'}}</div>
+                </div>
+              </div>
+            </ng-container>
+
+
+            <div class='mt-4 bg-gray-100 text-gray-800 px-4 pt-2 pb-4'>
+
+              <div class='mb-2 '>
+
+                <div class='grid grid-cols-3'>
+                  <div class='pb-1 flex flex-col  items-start text-sm'>
+                    <dt class='text-gray-600 text-xs'>Order number</dt>
+                    <dd class='font-medium text-gray-600'>${{element.id}}</dd>
+                  </div>
+                  <div class='pb-1 flex flex-col  items-start text-sm'>
+                    <dt class='text-gray-600 text-xs'>Table</dt>
+                    <dd class='font-medium text-gray-600'>{{element.table}}</dd>
+                  </div>
+
+                  <div class='pb-1 flex flex-col  items-start text-sm'>
+                    <dt class='text-gray-600 text-xs'>Order date</dt>
+                    <dd class='font-medium text-gray-600'>{{element.orderDate | date : 'dd MMM YYYY hh:mm'}}</dd>
+                  </div>
+
+                </div>
+
+                <div class='grid grid-cols-3'>
+                  <div class='pb-1 flex flex-col  items-start text-sm'>
+                    <dt class='text-gray-600 text-xs'>Customer name</dt>
+                    <dd class='font-medium text-gray-600'>{{element.name}}</dd>
+                  </div>
+
+                  <div class='pb-1 flex flex-col  items-start text-sm '>
+                    <dt class='text-gray-600 text-xs '>Comments</dt>
+                    <dd class='font-medium text-gray-600'>
+                      <ng-container *ngIf='element.comment && element.comment.length > 0 else NA'>
+                        {{element.comment}}
+                      </ng-container>
+                      <ng-template #NA>
+                        <div class='font-medium text-gray-600'>
+                          N/A
+                        </div>
+                      </ng-template>
+                    </dd>
+                  </div>
+                  <div class='pb-1 flex flex-col  items-start text-sm'>
+                    <dt class='text-gray-600 text-xs'>Current status</dt>
+                    <dd class='font-medium '>
+                      <ng-container [ngSwitch]='element.orderStatus'>
+                        <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_NEW'>
+                          <span>
+                          New order
+                          </span>
+
+                        </ng-container>
+                        <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_ACCEPTED'>
+                          Accepted order
+                        </ng-container>
+                        <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_DELIVERED'>
+                          Delivered order
+                        </ng-container>
+                        <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_PROCESSING'>
+                          Processing order
+                        </ng-container>
+                        <ng-container *ngSwitchCase='ORDER_STATUS.ORDER_CANCELED'>
+                          Canceled order
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>Missing status</ng-container>
+                      </ng-container>
+                    </dd>
+                  </div>
+                </div>
+
+
+                <div class='divide-y divide-gray-300'>
+                  <div class='pb-1 flex items-center justify-between text-sm'>
+                    <dt class=' text-gray-600'>Subtotal</dt>
+                    <dd class=' font-medium text-gray-600'>
+                      ${{element.orderPaymentSummaryExtraFee?.subtotal  | number : '1.2-2'}}</dd>
+                  </div>
+                  <div class='py-1 flex items-center justify-between text-sm'>
+                    <dt class='text-gray-600'>Service Charge
+                      ({{element.orderPaymentSummaryExtraFee.serviceChargePercentage}}%)
+                    </dt>
+                    <dd class='font-medium text-gray-600'>
+                      ${{element.orderPaymentSummaryExtraFee.serviceCharge  | number : '1.2-2'}}</dd>
+                  </div>
+                  <div class='py-1 flex items-center justify-between text-sm'>
+                    <dt class='text-gray-600'>Payment fee</dt>
+                    <dd class='font-medium text-gray-600'>
+                      ${{element.orderPaymentSummaryExtraFee.paymentFee  | number : '1.2-2'}}</dd>
+                  </div>
+                  <div class='py-1 flex items-center justify-between text-sm'>
+                    <dt class='text-gray-600'>Vat Rate ({{element.orderPaymentSummaryExtraFee.vatRatePercentage}}%)</dt>
+                    <dd class='font-medium text-gray-600'>
+                      ${{element.orderPaymentSummaryExtraFee.vatRate  | number : '1.2-2'}}</dd>
+                  </div>
+                  <div class='pt-1 flex items-center justify-between text-sm'>
+                    <dt class='font-medium text-gray-800'>Total</dt>
+                    <dd class='font-medium text-gray-800'>${{element.orderPaymentSummaryExtraFee.total}}</dd>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class='bg-gray-800 text-white px-4 pb-4 pt-2 mb-4'>
+              <div [ngClass]="{'mb-2':element.orderStatus !== ORDER_STATUS.ORDER_DELIVERED}"
+                   class='text-lg font-medium '>Change status
+              </div>
+              <div *ngIf='element.orderStatus === ORDER_STATUS.ORDER_DELIVERED' class='text-sm'>Your order has been
+                delivered and you cannot change the status. However for testing purposes you can put it to
+                <span (click)='updateOrderStatus(element, ORDER_STATUS.ORDER_NEW)'
+                      class='font-semibold cursor-pointer underline '>New status</span>
+              </div>
+              <div class='flex flex-row gap-4'>
+                <button (click)='updateOrderStatus(element, ORDER_STATUS.ORDER_PROCESSING)' *ngIf='element.orderStatus === ORDER_STATUS.ORDER_ACCEPTED'
+                        class='bg-orange-400 text-gray-800 font-semibold'
+                        mat-button>Process order
+                </button>
+                <button (click)='updateOrderStatus(element, ORDER_STATUS.ORDER_DELIVERED)' *ngIf='element.orderStatus === ORDER_STATUS.ORDER_PROCESSING'
+                        class='bg-green-400 text-gray-800 font-semibold'
+                        mat-button>Complete order
+                </button>
+
+                <button
+                  (click)='updateOrderStatus(element, ORDER_STATUS.ORDER_ACCEPTED)'
+                  *ngIf='element.orderStatus === ORDER_STATUS.ORDER_NEW || element.orderStatus === ORDER_STATUS.ORDER_CANCELED' class='bg-green-400 text-gray-800 font-semibold'
+                  mat-button>Accept order
+                </button>
+                <button
+                  (click)='updateOrderStatus(element, ORDER_STATUS.ORDER_CANCELED)'
+                  *ngIf='element.orderStatus !== ORDER_STATUS.ORDER_CANCELED && element.orderStatus !== ORDER_STATUS.ORDER_DELIVERED' class='bg-red-400 text-gray-800 font-semibold'
+                  mat-button>Cancel order
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef='columnsToDisplayWithExpand; sticky:true' class='bg-gray-50  text-white box-content'
+        mat-header-row></tr>
+    <tr (click)='expandedElement = expandedElement === element.id ? null : element.id' *matRowDef='let element; columns: columnsToDisplayWithExpand;'
+        [class.table-row-expanded]='expandedElement === element.id'
+        class='table-row'
+        mat-row>
+    </tr>
+    <tr *matRowDef="let row; columns: ['expandedDetail']" class='row-detail' mat-row></tr>
+    <mat-paginator [pageSizeOptions]='[5, 10, 20]'
+                   aria-label='Select page of periodic elements'
+                   showFirstLastButtons>
+    </mat-paginator>
+  </table>
+  <ng-container *ngIf='paginationConfig'>
+    <mat-paginator
+      (page)='pageChanged.emit($event)'
+      [length]='paginationConfig.length'
+      [pageIndex]='paginationConfig.pageIndex'
+      [pageSizeOptions]='[5, 10, 20]'
+      [pageSize]='paginationConfig.pageSize'
+      aria-label='Select page'
+      showFirstLastButtons>
+    </mat-paginator>
+  </ng-container>
+</ng-container>
+
+
+
+

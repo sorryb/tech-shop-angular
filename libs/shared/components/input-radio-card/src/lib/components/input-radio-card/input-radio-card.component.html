@@ -1,0 +1,30 @@
+<fieldset>
+  <legend class='text-lg font-medium text-gray-900'>{{title}}</legend>
+  <div class='mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4'>
+    <ng-container *ngFor='let item of inputRadioCardModel'>
+
+      <label (click)='updateSelected(item)'
+             [ngClass]="{'border-transparent':item.selected, 'border-gray-300':!item.selected}"
+             class='relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none'>
+        <input [value]='item.value' class='sr-only' name='delivery-method' type='radio'>
+        <div class='flex-1 flex'>
+          <div class='flex flex-col'>
+            <span class='block text-sm font-medium text-gray-900'>{{item.name}}</span>
+            <span class='mt-1 flex items-center text-sm text-gray-500'>{{item.description}}</span>
+            <span class='mt-6 text-sm font-medium text-gray-900'> {{item.valueDescription}} </span>
+          </div>
+        </div>
+        <ng-container *ngIf='item.selected'>
+          <svg aria-hidden='true' class='h-5 w-5 text-orange-600' fill='currentColor'
+               viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+            <path clip-rule='evenodd'
+                  d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+                  fill-rule='evenodd' />
+          </svg>
+        </ng-container>
+        <div [ngClass]="{'border-orange-500':item.selected,'border-transparent':!item.selected}"
+             aria-hidden='true' class='absolute -inset-px rounded-lg border-[3px] pointer-events-none'></div>
+      </label>
+    </ng-container>
+  </div>
+</fieldset>

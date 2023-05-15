@@ -1,0 +1,38 @@
+<ng-container *ngIf="shopState | async as productsState">
+  <ng-container *ngIf='productsState.products.requestStatus.status === "COMPLETED"'>
+    <app-dom-portal [selector]="'#headerId'">
+      <h1 class="text-gray-800 text-3xl font-extrabold tracking-tight sm:text-4xl">Technology Stack Shop Application</h1>
+    </app-dom-portal>
+
+    <div class="grid h-full grid-rows-[90px 1fr]">
+
+      <div class="pt-4 pl-4 pr-4 overflow-hidden">
+        <ng-container *ngIf='productsState.categories.requestStatus.status === "COMPLETED"'>
+          <app-category-summary-card
+            (categorySelected)="filterProducts($event)"
+            [categorySummaries]="productsState.categories.domain"></app-category-summary-card>
+        </ng-container>
+
+      </div>
+      <div class="overflow-y-scroll">
+        <app-product-list
+          [products]="productsState.products.domain"
+          (onAddToBag)="handleAddToBag($event)"
+          (onShowProductDetails)="showProductDetails($event)">
+        </app-product-list>
+      </div>
+    </div>
+    <ng-template #templatePortalContent let-data>
+      <div class="flex flex-row items-center">
+        <div>Product <span class="font-medium text-orange-500">{{data.name}}</span> was added to cart.</div>
+        <ng-container *ngIf="matSnackbarRef">
+          <button class="ml-2" mat-icon-button (click)="matSnackbarRef.dismiss()">
+            <mat-icon svgIcon="close"></mat-icon>
+          </button>
+        </ng-container>
+      </div>
+    </ng-template>
+  </ng-container>
+
+
+</ng-container>

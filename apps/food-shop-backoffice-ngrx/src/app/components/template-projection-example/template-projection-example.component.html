@@ -1,0 +1,71 @@
+<app-dom-portal [selector]="'#headerId'">Template Projection</app-dom-portal>
+
+<!--
+<ng-container *ngFor="let item of rowTables">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <ng-container *ngIf="menuEntries$ | async as menuEntries">
+      <ng-container *ngFor="let item of menuEntries">
+        <button mat-menu-item>
+          <span>{{item}}</span>
+        </button>
+      </ng-container>
+    </ng-container>
+  </mat-menu>
+
+</ng-container>-->
+<!--
+
+<ng-container *ngFor="let item of rowTables">
+  <mat-menu #appMenu="matMenu">
+    <ng-template matMenuContent>
+      <ng-container *ngIf="menuEntries$ | async as menuEntries">
+        <ng-container *ngFor="let item of menuEntries">
+          <button mat-menu-item>
+            <span>{{item}}</span>
+          </button>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+</ng-container>
+-->
+
+<div class="mt-10">
+  <app-table-project [data]="dataSource"></app-table-project>
+  <app-table-project [data]="dataSource2"></app-table-project>
+</div>
+
+
+<div class="mt-10">
+  <app-table-project [data]="dataSource" >
+
+    <ng-template appTableHeader>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </ng-template>
+
+    <ng-template appTableRow let-row>
+      <td class="py-5">
+        <div class="flex flex-col">
+          <div>First Name : {{row.firstName}} </div>
+          <div>Last Name : {{row.lastName}} </div>
+        </div>
+
+      </td>
+      <td>Last Name : {{row.lastName}}</td>
+
+    </ng-template>
+
+
+  </app-table-project>
+</div>
+

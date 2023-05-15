@@ -1,0 +1,23 @@
+<ng-container *ngIf="{value: isFavoriteProduct$ | async} as favorite">
+  <app-product-details
+    [product]="product"
+    [favorite]="favorite.value"
+    [quantity]="numberOfServing"
+    (closeEvent)="closeDialog()"
+    (addToBagEvent)="handleAddToBag($event)"
+    (favoriteChanged)="handleFavoriteChanged($event)"
+  >
+  </app-product-details>
+</ng-container>
+
+
+<ng-template #templatePortalContent let-data>
+  <div class="flex flex-row items-center">
+    <div>Product <span class="font-medium text-orange-500">{{data.name}}</span> was added to cart.</div>
+    <ng-container *ngIf="matSnackbarRef">
+      <button class="ml-2" mat-icon-button (click)="matSnackbarRef.dismiss()">
+        <mat-icon svgIcon="close"></mat-icon>
+      </button>
+    </ng-container>
+  </div>
+</ng-template>
