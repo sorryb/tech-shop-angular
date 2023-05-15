@@ -253,13 +253,14 @@
       "id": 16,
       "img": "assets/food/steak/6.jpg",
       "ingredients": [
-        "Mushrooms",
-        "Pepper",
-        "Smoked paprika",
-        "Tomatoes"
+        "Cloud",
+        "App",
+        "Service",
+        "Herokoo",
+        "CLI"
       ],
       "price": 13.97,
-      "name": "Flank Steak",
+      "name": "Herokoo",
       "reviewNumber": 836,
       "reviewStar": 4.95,
       "size": "184 g",
@@ -269,13 +270,14 @@
       "id": 17,
       "img": "assets/food/steak/7.jpg",
       "ingredients": [
-        "Pepper",
-        "Potato",
-        "Tomatoes",
-        "Rosemary"
+        "Cloud",
+        "App",
+        "Service",
+        "Azure",
+        "Azure CLI"
       ],
       "price": 17.57,
-      "name": "Skirt Steak",
+      "name": "Azure Kubernetes Services - AKS",
       "reviewNumber": 612,
       "reviewStar": 4.19,
       "size": "335 g",
@@ -285,11 +287,14 @@
       "id": 18,
       "img": "assets/food/steak/8.jpg",
       "ingredients": [
-        "Marinade",
-        "Potato"
+        "Cloud",
+        "App",
+        "Service",
+        "AWS",
+        "AWS Console"
       ],
       "price": 13.55,
-      "name": "Flat Iron Steak",
+      "name": "Amazon Kubernetes Service",
       "reviewNumber": 69,
       "reviewStar": 2.09,
       "size": "303 g",
@@ -299,13 +304,14 @@
       "id": 19,
       "img": "assets/food/steak/9.jpg",
       "ingredients": [
-        "Rosemary",
-        "Pepper",
-        "Garlic",
-        "Smoked paprika"
+        "Cloud",
+        "JSON",
+        "Service",
+        "NO-SQL",
+        "Azure CLI"
       ],
       "price": 17.8,
-      "name": "Short Ribs",
+      "name": "Azure CosmosDB",
       "reviewNumber": 1083,
       "reviewStar": 4.78,
       "size": "248 g",
@@ -315,13 +321,14 @@
       "id": 20,
       "img": "assets/food/steak/10.jpg",
       "ingredients": [
-        "Butter",
-        "Rosemary",
-        "Marinade",
-        "Pepper"
+        "Cloud",
+        "App",
+        "Service",
+        "JSON",
+        "AWS CLI"
       ],
       "price": 10.05,
-      "name": "Sirloin Steak",
+      "name": "AWS Dynamo DB",
       "reviewNumber": 626,
       "reviewStar": 1.51,
       "size": "193 g",
@@ -331,11 +338,11 @@
       "id": 21,
       "img": "assets/food/pasta/1.jpg",
       "ingredients": [
-        "Butter",
-        "Tomatoes"
+        "C#",
+        "Microsoft"
       ],
       "price": 9.65,
-      "name": "Ribeye Steak",
+      "name": ".NET",
       "reviewNumber": 996,
       "reviewStar": 3.59,
       "size": "234 g",
@@ -345,10 +352,11 @@
       "id": 22,
       "img": "assets/food/pasta/2.jpg",
       "ingredients": [
-        "Marinade"
+        "C#",
+        "Microsoft"
       ],
       "price": 16.59,
-      "name": "Tenderloin Steak",
+      "name": ".NET 8",
       "reviewNumber": 516,
       "reviewStar": 3.72,
       "size": "350 g",
@@ -358,14 +366,11 @@
       "id": 23,
       "img": "assets/food/pasta/3.jpg",
       "ingredients": [
-        "Smoked paprika",
-        "Potato",
-        "Butter",
-        "Mushrooms",
-        "Pepper"
+        "C#",
+        "Microsoft"
       ],
       "price": 19.47,
-      "name": "Strip Steak",
+      "name": ".NET 6",
       "reviewNumber": 269,
       "reviewStar": 3.2,
       "size": "558 g",
@@ -375,11 +380,11 @@
       "id": 24,
       "img": "assets/food/pasta/4.jpg",
       "ingredients": [
-        "Marinade",
-        "Mushrooms"
+        "C#",
+        "Microsoft"
       ],
       "price": 11.7,
-      "name": "Hanger Steak",
+      "name": "ASP.NET Core",
       "reviewNumber": 282,
       "reviewStar": 0.96,
       "size": "375 g",
@@ -389,14 +394,11 @@
       "id": 25,
       "img": "assets/food/pasta/5.jpg",
       "ingredients": [
-        "Rosemary",
-        "Garlic",
-        "Butter",
-        "Pepper",
-        "Smoked paprika"
+        "C#",
+        "Microsoft"
       ],
       "price": 16.08,
-      "name": "T-Bone Steak",
+      "name": "EF Core",
       "reviewNumber": 637,
       "reviewStar": 4.52,
       "size": "282 g",
@@ -406,13 +408,11 @@
       "id": 26,
       "img": "assets/food/pasta/6.jpg",
       "ingredients": [
-        "Mushrooms",
-        "Pepper",
-        "Smoked paprika",
-        "Tomatoes"
+        "C#",
+        "Microsoft"
       ],
       "price": 13.97,
-      "name": "Flank Steak",
+      "name": "LINQ",
       "reviewNumber": 836,
       "reviewStar": 4.95,
       "size": "184 g",
@@ -422,13 +422,11 @@
       "id": 27,
       "img": "assets/food/pasta/7.jpg",
       "ingredients": [
-        "Pepper",
-        "Potato",
-        "Tomatoes",
-        "Rosemary"
+        "C#",
+        "Microsoft"
       ],
       "price": 17.57,
-      "name": "Skirt Steak",
+      "name": ".NET Framework 4.8",
       "reviewNumber": 612,
       "reviewStar": 4.19,
       "size": "335 g",
@@ -438,11 +436,11 @@
       "id": 28,
       "img": "assets/food/pasta/8.jpg",
       "ingredients": [
-        "Marinade",
-        "Potato"
+        "C#",
+        "Microsoft"
       ],
       "price": 13.55,
-      "name": "Flat Iron Steak",
+      "name": "Serilog",
       "reviewNumber": 69,
       "reviewStar": 2.09,
       "size": "303 g",
@@ -452,13 +450,11 @@
       "id": 29,
       "img": "assets/food/pasta/9.jpg",
       "ingredients": [
-        "Rosemary",
-        "Pepper",
-        "Garlic",
-        "Smoked paprika"
+        "C#",
+        "Microsoft"
       ],
       "price": 17.8,
-      "name": "Short Ribs",
+      "name": "Nuget Server",
       "reviewNumber": 1083,
       "reviewStar": 4.78,
       "size": "248 g",
@@ -468,13 +464,11 @@
       "id": 30,
       "img": "assets/food/pasta/10.jpg",
       "ingredients": [
-        "Butter",
-        "Rosemary",
-        "Marinade",
-        "Pepper"
+        "C#",
+        "Microsoft"
       ],
       "price": 10.05,
-      "name": "Sirloin Steak",
+      "name": "Web Api",
       "reviewNumber": 626,
       "reviewStar": 1.51,
       "size": "193 g",
@@ -484,13 +478,13 @@
       "id": 31,
       "img": "assets/food/drinks/1.jpg",
       "ingredients": [
-        "Pineapple juice",
-        "Mint",
-        "Apple juice",
-        "Tequila"
+        "SQL",
+        "Microsoft",
+        "Database",
+        "Indexes"
       ],
       "price": 9.7,
-      "name": "Old Fashioned",
+      "name": "SQL Server",
       "reviewNumber": 222,
       "reviewStar": 4.92,
       "size": "273 g",
@@ -500,11 +494,11 @@
       "id": 32,
       "img": "assets/food/drinks/2.jpg",
       "ingredients": [
-        "White Rum",
-        "Pineapple juice"
+        "SQL",
+        "SqlIte"
       ],
       "price": 17.68,
-      "name": "Negroni",
+      "name": "SQLITE",
       "reviewNumber": 119,
       "reviewStar": 0.05,
       "size": "419 g",
@@ -514,13 +508,13 @@
       "id": 33,
       "img": "assets/food/drinks/3.jpg",
       "ingredients": [
-        "Apple juice",
-        "Pineapple juice",
-        "Tequila",
-        "Orange juice"
+        "Apple",
+        "Database",
+        "Postgress",
+        "SQL"
       ],
       "price": 7.13,
-      "name": "Daiquiri",
+      "name": "POSTGRESS",
       "reviewNumber": 974,
       "reviewStar": 3.61,
       "size": "365 g",
@@ -530,14 +524,13 @@
       "id": 34,
       "img": "assets/food/drinks/4.jpg",
       "ingredients": [
-        "Vodka",
-        "Limes",
-        "Syrup",
-        "Mint",
-        "Pineapple juice"
+        "Oracle",
+        "Database",
+        "Server",
+        "SQL"
       ],
       "price": 11.65,
-      "name": "Dry Martini",
+      "name": "Oracle",
       "reviewNumber": 848,
       "reviewStar": 3.41,
       "size": "195 g",
@@ -547,14 +540,13 @@
       "id": 35,
       "img": "assets/food/drinks/5.jpg",
       "ingredients": [
-        "Vodka",
-        "White Rum",
-        "Tequila",
-        "Limes",
-        "Pineapple juice"
+        "Oracle",
+        "Database",
+        "Server",
+        "SQL"
       ],
       "price": 19.28,
-      "name": "Margarita",
+      "name": "MySQL",
       "reviewNumber": 841,
       "reviewStar": 4.95,
       "size": "273 g",
@@ -564,14 +556,14 @@
       "id": 36,
       "img": "assets/food/drinks/6.jpg",
       "ingredients": [
-        "Whiskey",
-        "Orange juice",
-        "Vodka",
-        "Pineapple juice",
-        "Apple juice"
+        "Azure",
+        "SQL",
+        "Microsoft",
+        "Index",
+        "Server-Cloud"
       ],
       "price": 18.57,
-      "name": "Espresso Martini",
+      "name": "Azure SQL Database",
       "reviewNumber": 321,
       "reviewStar": 4.91,
       "size": "355 g",
@@ -581,10 +573,10 @@
       "id": 37,
       "img": "assets/food/drinks/7.jpg",
       "ingredients": [
-        "Whiskey"
+        "Cloud"
       ],
       "price": 12.97,
-      "name": "Whiskey Sour",
+      "name": "MongoDB",
       "reviewNumber": 706,
       "reviewStar": 0.71,
       "size": "355 g",
@@ -594,12 +586,12 @@
       "id": 38,
       "img": "assets/food/drinks/8.jpg",
       "ingredients": [
-        "White Rum",
-        "Limes",
-        "Orange juice"
+        "JSON",
+        "Databae",
+        "Cloud"
       ],
       "price": 16.05,
-      "name": "Manhattan",
+      "name": "JSON-Server",
       "reviewNumber": 173,
       "reviewStar": 4.42,
       "size": "515 g",
@@ -609,12 +601,12 @@
       "id": 39,
       "img": "assets/food/drinks/9.jpg",
       "ingredients": [
-        "Limes",
-        "Vodka",
-        "Apple juice"
+        "JSON",
+        "Databae",
+        "Cloud"
       ],
       "price": 11.73,
-      "name": "Aperol Spritz",
+      "name": "Azure Tables",
       "reviewNumber": 582,
       "reviewStar": 2.45,
       "size": "341 g",
@@ -624,13 +616,13 @@
       "id": 40,
       "img": "assets/food/drinks/10.jpg",
       "ingredients": [
-        "Whiskey",
-        "Mint",
-        "Syrup",
-        "Limes"
+        "Hardware Security Module",
+        "Azure",
+        "HSM",
+        "Security"
       ],
       "price": 12.93,
-      "name": "Mojito",
+      "name": "Azure HSM",
       "reviewNumber": 936,
       "reviewStar": 3.1,
       "size": "396 g",
@@ -776,7 +768,7 @@
           "quantity": 8
         }
       ],
-      "name": "First",
+      "name": "First Tesh Order Cloud",
       "comment": "Some comment ",
       "table": 3,
       "orderPaymentSummaryExtraFee": {
@@ -829,7 +821,7 @@
           "quantity": 1
         }
       ],
-      "name": "Some name",
+      "name": "Some name order",
       "comment": "SOme comment",
       "table": 3,
       "orderPaymentSummaryExtraFee": {
@@ -1000,7 +992,7 @@
           "quantity": 1
         }
       ],
-      "name": "asdasd",
+      "name": "Another Order for Tech Stack",
       "comment": "sdad",
       "table": 3,
       "orderPaymentSummaryExtraFee": {
@@ -1077,8 +1069,8 @@
           "quantity": 6
         }
       ],
-      "name": "Dima Adrian",
-      "comment": "",
+      "name": "Special Offer Order",
+      "comment": "No comments here.",
       "table": 4,
       "orderPaymentSummaryExtraFee": {
         "subtotal": 308.14,
