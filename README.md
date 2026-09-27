@@ -138,11 +138,13 @@ branch using GitHub Actions. After pushing this repository to GitHub:
 2. Set **Source** to **GitHub Actions**.
 3. Push to `main` or run the **Deploy food shop to GitHub Pages** workflow manually.
 
-The site will be available at:
+[Deployed App](https://sorryb.github.io/tech-shop-angular/)
 
 ```text
 https://sorryb.github.io/tech-shop-angular/
 ```
+
+![alt text](image.png)
 
 GitHub Pages only hosts static files. The storefront currently calls the local
 `json-server` API at `/api`, so product, category, and order requests will not
