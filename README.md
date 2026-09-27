@@ -91,3 +91,50 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+## Start app
+```bash
+First npm install
+```
+Then:
+
+```bash
+npx nx serve food-shop
+npx nx serve food-shop-backoffice
+npx nx serve food-shop-ngrx
+npx nx serve food-shop-backoffice-ngrx
+```
+The output:
+
+food-shop                    http://localhost:4200
+food-shop-backoffice         http://localhost:4201
+food-shop-ngrx               http://localhost:4202
+food-shop-backoffice-ngrx    http://localhost:4203
+
+
+## Mock Server
+Start the mock API separately:
+
+```bash
+npx json-server --watch db.json
+```
+
+## Deploy to GitHub Pages
+
+The `food-shop` storefront is configured to deploy automatically from the `main`
+branch using GitHub Actions. After pushing this repository to GitHub:
+
+1. Open **Settings → Pages** in the repository.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` or run the **Deploy food shop to GitHub Pages** workflow manually.
+
+The site will be available at:
+
+```text
+https://sorryb.github.io/tech-shop-angular/
+```
+
+GitHub Pages only hosts static files. The storefront currently calls the local
+`json-server` API at `/api`, so product, category, and order requests will not
+work on the published site until that API is hosted separately and the Angular
+services are configured with its URL.
