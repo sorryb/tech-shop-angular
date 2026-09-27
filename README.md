@@ -91,3 +91,30 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+## Start app
+```bash
+First npm install
+```
+Then:
+
+```bash
+npx nx serve food-shop
+npx nx serve food-shop-backoffice
+npx nx serve food-shop-ngrx
+npx nx serve food-shop-backoffice-ngrx
+```
+The output:
+
+food-shop                    http://localhost:4200
+food-shop-backoffice         http://localhost:4201
+food-shop-ngrx               http://localhost:4202
+food-shop-backoffice-ngrx    http://localhost:4203
+
+
+## Mock Server
+Start the mock API separately:
+
+```bash
+npx json-server --watch db.json
+```
