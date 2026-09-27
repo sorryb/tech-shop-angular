@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: '/api',
   vatRatePercentage: 19,
   serviceChargePercentage: 10
 };

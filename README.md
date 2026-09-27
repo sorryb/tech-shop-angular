@@ -118,6 +118,14 @@ Start the mock API separately:
 ```bash
 npx json-server --watch db.json
 ```
+it runs at 
+
+"http://localhost:3000"
+and is set in [proxy.conf.json]
+...tech-shop-angular\proxy.conf.json
+ External at:
+https://my-json-server.typicode.com/sorryb/tech-shop-angular
+see environment.prod
 
 ## Deploy to GitHub Pages
 

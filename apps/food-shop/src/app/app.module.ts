@@ -12,6 +12,7 @@ import { FavoriteStateService } from './services/favorite-state.service';
 import { OrdersStateService } from './services/orders-state.service';
 import { ProductsStateService } from './services/products-state.service';
 import { ApiServiceModule } from '@food-shop-architecture-workshop/core/services/api-service';
+import { API_BASE_URL } from '@food-shop-architecture-workshop/core/services/api-service';
 import { ShopComponent } from './components/shop/shop.component';
 import { DomPortalModule } from '@food-shop-architecture-workshop/shared/components/dom-portal';
 import { AppRouting } from './app.routing';
@@ -29,6 +30,7 @@ import { FoodShopOrdersOrderDetailsModule } from '@food-shop-architecture-worksh
 import { COMMON_SETTINGS_TOKEN, CommonSettings } from '@food-shop-architecture-workshop/core/model';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class ConfigLoader<T extends CommonSettings> {
@@ -85,10 +87,14 @@ export interface FoodShopSettings extends CommonSettings {
     ProductsStateService,
     ConfigLoader,
     {
+      provide: API_BASE_URL,
+      useValue: environment.apiUrl,
+    },
+    {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: (configLoader: ConfigLoader<FoodShopSettings>) => () => {
-        return configLoader.loadConfig('http://localhost:4200/api/config').pipe(
+        return configLoader.loadConfig(`${environment.apiUrl}/config`).pipe(
           catchError(err => {
             return of({
               enableCart: false,
