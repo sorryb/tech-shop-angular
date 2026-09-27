@@ -118,3 +118,23 @@ Start the mock API separately:
 ```bash
 npx json-server --watch db.json
 ```
+
+## Deploy to GitHub Pages
+
+The `food-shop` storefront is configured to deploy automatically from the `main`
+branch using GitHub Actions. After pushing this repository to GitHub:
+
+1. Open **Settings → Pages** in the repository.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` or run the **Deploy food shop to GitHub Pages** workflow manually.
+
+The site will be available at:
+
+```text
+https://sorryb.github.io/tech-shop-angular/
+```
+
+GitHub Pages only hosts static files. The storefront currently calls the local
+`json-server` API at `/api`, so product, category, and order requests will not
+work on the published site until that API is hosted separately and the Angular
+services are configured with its URL.
