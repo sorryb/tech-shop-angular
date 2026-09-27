@@ -1,0 +1,66 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/tech-shop-welcome/src",
+  "prefix": "tech-shop-welcome",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tech-shop-welcome",
+        "index": "apps/tech-shop-welcome/src/index.html",
+        "main": "apps/tech-shop-welcome/src/main.ts",
+        "polyfills": "apps/tech-shop-welcome/src/polyfills.ts",
+        "tsConfig": "apps/tech-shop-welcome/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/tech-shop-welcome/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/core/theme/assets/icons/",
+            "output": "assets/icons/"
+          }
+        ],
+        "styles": ["libs/core/theme/styles/styles.scss", "apps/tech-shop-welcome/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {"type": "initial", "maximumWarning": "1.25mb", "maximumError": "1.5mb"},
+            {"type": "anyComponentStyle", "maximumWarning": "2kb", "maximumError": "4kb"}
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {"browserTarget": "tech-shop-welcome:build:production"},
+        "development": {"browserTarget": "tech-shop-welcome:build:development"}
+      },
+      "defaultConfiguration": "development",
+      "options": {"port": 4204}
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {"lintFilePatterns": ["apps/tech-shop-welcome/**/*.ts", "apps/tech-shop-welcome/**/*.html"]}
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tech-shop-welcome"],
+      "options": {"jestConfig": "apps/tech-shop-welcome/jest.config.ts", "passWithNoTests": true}
+    }
+  },
+  "tags": []
+}

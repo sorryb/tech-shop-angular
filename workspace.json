@@ -5,6 +5,7 @@
     "core-model": "libs/core/model",
     "core-services-api-service": "libs/core/services/api-service",
     "core-theme": "libs/core/theme",
+    "tech-shop-welcome": "apps/tech-shop-welcome",
     "food-shop": "apps/food-shop",
     "food-shop-backoffice": "apps/food-shop-backoffice",
     "food-shop-backoffice-ngrx": "apps/food-shop-backoffice-ngrx",

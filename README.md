@@ -103,6 +103,7 @@ npx nx serve food-shop
 npx nx serve food-shop-backoffice
 npx nx serve food-shop-ngrx
 npx nx serve food-shop-backoffice-ngrx
+npx nx serve tech-shop-welcome
 ```
 The output:
 
@@ -110,6 +111,7 @@ food-shop                    http://localhost:4200
 food-shop-backoffice         http://localhost:4201
 food-shop-ngrx               http://localhost:4202
 food-shop-backoffice-ngrx    http://localhost:4203
+tech-shop-welcome            http://localhost:4204
 
 
 ## Mock Server

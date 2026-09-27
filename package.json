@@ -10,6 +10,7 @@
     "serve-json": "json-server --watch db.json",
     "serve-foodshop": "nx run food-shop:serve:development",
     "serve-foodshop-backoffice": "nx run food-shop-backoffice:serve:development",
+    "serve-tech-shop-welcome": "nx run tech-shop-welcome:serve:development",
     "serve-foodshnop-ngrx": "nx run food-shop-ngrx:serve:development",
     "serve-foodshop-backoffice-ngrx": "nx run food-shop-backoffice-ngrx:serve:development",
     "dep-graph": "nx dep-graph --port 4222 "

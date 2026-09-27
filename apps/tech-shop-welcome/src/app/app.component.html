@@ -1,0 +1,31 @@
+<main class="portal-shell">
+  <header class="portal-header">
+    <h1>Technology Stack Shop Application</h1>
+
+    <div class="header-icons" aria-label="Application shortcuts">
+      <mat-icon svgIcon="memo-circle-info-solid" aria-label="Information"></mat-icon>
+      <mat-icon svgIcon="heart-solid" aria-label="Favorites"></mat-icon>
+      <mat-icon svgIcon="basket" aria-label="Shopping basket"></mat-icon>
+    </div>
+  </header>
+
+  <section class="app-links" aria-label="Choose an application">
+    <a class="app-badge app-badge-primary" [href]="storefrontUrl">
+      <span class="badge-icon"><mat-icon svgIcon="burger-soda-light"></mat-icon></span>
+      <span>
+        <small>Customer experience</small>
+        <strong>Tech Shop</strong>
+      </span>
+      <mat-icon class="arrow" svgIcon="arrow-left-solid"></mat-icon>
+    </a>
+
+    <a class="app-badge app-badge-secondary" [href]="backofficeUrl">
+      <span class="badge-icon"><mat-icon svgIcon="chart-mixed-light"></mat-icon></span>
+      <span>
+        <small>Management tools</small>
+        <strong>Tech Shop Backoffice</strong>
+      </span>
+      <mat-icon class="arrow" svgIcon="arrow-left-solid"></mat-icon>
+    </a>
+  </section>
+</main>

@@ -1,0 +1,94 @@
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+.portal-shell {
+  width: min(1600px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+.portal-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  color: #172337;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+  color: #172337;
+}
+
+.header-icons mat-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.app-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 32px 20px;
+}
+
+.app-badge {
+  display: flex;
+  align-items: center;
+  min-width: min(330px, 100%);
+  gap: 14px;
+  padding: 12px 22px 12px 12px;
+  border-radius: 999px;
+  color: #172337;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgb(23 35 55 / 12%);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.app-badge:hover,
+.app-badge:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px rgb(23 35 55 / 18%);
+  outline: none;
+}
+
+.app-badge-primary { background: #ff7417; color: white; }
+.app-badge-secondary { background: white; }
+
+.badge-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+}
+
+.badge-icon mat-icon { width: 30px; height: 30px; }
+
+.app-badge span:nth-child(2) { display: flex; flex-direction: column; gap: 3px; }
+.app-badge small { font-size: 11px; opacity: .8; }
+.app-badge strong { font-size: 18px; font-weight: 700; white-space: nowrap; }
+.arrow { width: 18px; height: 18px; margin-left: auto; transform: rotate(180deg); }
+
+@media (max-width: 640px) {
+  .portal-shell { width: min(100% - 24px, 560px); padding-top: 20px; }
+  .portal-header { align-items: flex-start; }
+  .header-icons { gap: 12px; }
+  .header-icons mat-icon { width: 22px; height: 22px; }
+  .app-links { padding: 24px 0; }
+  .app-badge { min-width: 0; width: 100%; }
+}
