@@ -123,6 +123,8 @@ it runs at
 "http://localhost:3000"
 and is set in [proxy.conf.json]
 ...tech-shop-angular\proxy.conf.json
+
+## External API
  External at:
 https://my-json-server.typicode.com/sorryb/tech-shop-angular
 see environment.prod
