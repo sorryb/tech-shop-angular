@@ -3,6 +3,14 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+## Project documentation
+
+The `docs` folder contains step-by-step explanations of the workspace architecture and the reusable Angular libraries used by the applications:
+
+- [Set up the Nx workspace](docs/1.Setup_NX_Workspace.md) — Create the monorepo, generate the Angular applications, configure the shared theme with Angular Material and Tailwind CSS, add the core model and DOM portal libraries, configure the API proxy, and seed the JSON Server data.
+- [Create feature libraries](docs/2.%20Create_Library.md) — Build reusable storefront and back-office libraries, including category, favorites, cart, orders, product, checkout, and order-details components, plus shared utilities.
+- [Add shared libraries and API services](docs/3.%20Add_shared_libraries.md) — Add the reusable input-radio-card component and the API service library for categories, products, orders, and persisted client state.
+
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
@@ -156,7 +164,7 @@ https://sorryb.github.io/tech-shop-angular/food-shop/
 https://sorryb.github.io/tech-shop-angular/food-shop-backoffice/
 ```
 
-![alt text](image.png)
+![alt text](./docs/images.gif)
 
 GitHub Pages only hosts static files. The storefront currently calls the local
 `json-server` API at `/api`, so product, category, and order requests will not
