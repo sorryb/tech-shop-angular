@@ -148,10 +148,12 @@ branch using GitHub Actions. After pushing this repository to GitHub:
 2. Set **Source** to **GitHub Actions**.
 3. Push to `main` or run the **Deploy food shop to GitHub Pages** workflow manually.
 
-[Deployed App](https://sorryb.github.io/tech-shop-angular/)
+[Welcome pahe for Deployed App](https://sorryb.github.io/tech-shop-angular/tech-shop-welcome/)
 
 ```text
-https://sorryb.github.io/tech-shop-angular/
+https://sorryb.github.io/tech-shop-angular/tech-shop-welcome/
+https://sorryb.github.io/tech-shop-angular/food-shop/
+https://sorryb.github.io/tech-shop-angular/food-shop-backoffice/
 ```
 
 ![alt text](image.png)

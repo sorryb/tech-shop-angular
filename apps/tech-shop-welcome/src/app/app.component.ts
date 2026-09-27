@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'tech-shop-welcome-root',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  readonly storefrontUrl = 'http://localhost:4200';
-  readonly backofficeUrl = 'http://localhost:4201';
+  readonly storefrontUrl = environment.storefrontUrl;
+  readonly backofficeUrl = environment.backofficeUrl;
 }
