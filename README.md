@@ -105,6 +105,14 @@ npx nx serve food-shop-ngrx
 npx nx serve food-shop-backoffice-ngrx
 npx nx serve tech-shop-welcome
 ```
+or
+
+```bash
+
+npx nx run-many --target=serve --projects=food-shop,food-shop-backoffice,tech-shop-welcome --parallel=3
+
+```
+
 The output:
 
 food-shop                    http://localhost:4200

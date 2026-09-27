@@ -1,4 +1,4 @@
-name: Deploy food shop to Pages
+name: Deploy apps to Pages
 
 on:
   push:
@@ -34,16 +34,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular app
-        run: npx nx build food-shop --configuration production --base-href /tech-shop-angular/
-
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Angular build
+      - name: Build Angular apps
+        run: |
+          npx nx build food-shop --configuration production --base-href "${{ steps.pages.outputs.base_path }}/food-shop/"
+          npx nx build food-shop-backoffice --configuration production --base-href "${{ steps.pages.outputs.base_path }}/food-shop-backoffice/"
+          npx nx build tech-shop-welcome --configuration production --base-href "${{ steps.pages.outputs.base_path }}/tech-shop-welcome/"
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p dist/pages/food-shop
+          mkdir -p dist/pages/food-shop-backoffice
+          mkdir -p dist/pages/tech-shop-welcome
+          cp -R dist/apps/food-shop/. dist/pages/food-shop/
+          cp -R dist/apps/food-shop-backoffice/. dist/pages/food-shop-backoffice/
+          cp -R dist/apps/tech-shop-welcome/. dist/pages/tech-shop-welcome/
+
+      - name: Upload apps artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/apps/food-shop
+          path: dist/pages
 
       - name: Deploy to GitHub Pages
         id: deployment
