@@ -1,0 +1,64 @@
+{
+  "routes": [
+    {
+      "route": "/api/config",
+      "rewrite": "/data/config.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/product",
+      "rewrite": "/data/product.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/categories",
+      "rewrite": "/data/categories.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/order",
+      "rewrite": "/data/order.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/order/51DD591A",
+      "rewrite": "/data/orders/51DD591A.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/order/2FF69B73",
+      "rewrite": "/data/orders/2FF69B73.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/order/DD579F76",
+      "rewrite": "/data/orders/DD579F76.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/order/0722BF94",
+      "rewrite": "/data/orders/0722BF94.json",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/*",
+      "statusCode": 404
+    }
+  ]
+}

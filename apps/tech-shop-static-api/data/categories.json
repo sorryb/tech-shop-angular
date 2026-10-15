@@ -1,0 +1,22 @@
+[
+  {
+    "name": "FRONT-END",
+    "image": "assets/food/category/pizza.jpg",
+    "type": "FRONT-END"
+  },
+  {
+    "name": "BACK-END",
+    "image": "assets/food/category/pasta.jpg",
+    "type": "BACK-END"
+  },
+  {
+    "name": "CLOUD",
+    "image": "assets/food/category/steak.jpg",
+    "type": "CLOUD"
+  },
+  {
+    "name": "DATA",
+    "image": "assets/food/category/drinks.jpg",
+    "type": "DATA"
+  }
+]

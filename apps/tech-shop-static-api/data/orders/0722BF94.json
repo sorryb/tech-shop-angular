@@ -1,0 +1,60 @@
+{
+  "orderedProducts": [
+    {
+      "product": {
+        "id": 3,
+        "img": "assets/food/pizza/3.jpg",
+        "ingredients": [
+          "Baby Spinach",
+          "Basil",
+          "Cream Sauce",
+          "Fresh Tomato",
+          "Chicken"
+        ],
+        "price": 9.98,
+        "name": "Pepperoni Pizza",
+        "reviewNumber": 994,
+        "reviewStar": 3.76,
+        "size": "486 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 1
+    },
+    {
+      "product": {
+        "id": 2,
+        "img": "assets/food/pizza/2.jpg",
+        "ingredients": [
+          "Chicken",
+          "Cream Sauce",
+          "Sweet Corn",
+          "Fresh Tomato",
+          "Baby Spinach"
+        ],
+        "price": 5.88,
+        "name": "Veggie Pizza",
+        "reviewNumber": 148,
+        "reviewStar": 3.55,
+        "size": "302 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 1
+    }
+  ],
+  "name": "32131",
+  "comment": "sdaasd",
+  "table": 2,
+  "orderPaymentSummaryExtraFee": {
+    "subtotal": 15.86,
+    "serviceChargePercentage": 10,
+    "vatRatePercentage": 19,
+    "vatRate": 3.32,
+    "serviceCharge": 1.59,
+    "total": 33.27,
+    "paymentFee": 12.5
+  },
+  "orderStatus": "ORDER_NEW",
+  "orderDateUnix": 1670332141,
+  "id": "0722BF94",
+  "userId": "bf4cb37b-274d-49eb-a215-06ed5a6cff86"
+}

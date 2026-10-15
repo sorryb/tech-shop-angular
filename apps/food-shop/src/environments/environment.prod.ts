@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://my-json-server.typicode.com/sorryb/tech-shop-angular',
+  apiUrl: 'https://sorryb.github.io/tech-shop-angular/tech-shop-static-api/api',
   vatRatePercentage: 19,
   serviceChargePercentage: 10
 };

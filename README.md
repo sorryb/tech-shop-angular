@@ -142,6 +142,10 @@ it runs at
 and is set in [proxy.conf.json]
 ...tech-shop-angular\proxy.conf.json
 
+## Read-only static API
+
+The `apps/tech-shop-static-api` folder contains a static-data app. Its generator creates `/api/config`, `/api/product`, `/api/categories`, and `/api/order` endpoints from `db.json`. The GitHub Pages workflow publishes these under `/tech-shop-static-api/api/`; the food-shop production environment points to that base URL. See the [API README](apps/tech-shop-static-api/README.md) for local generation and Azure Static Web Apps deployment. The API is GET-only, so order creation and status updates are unavailable, and order pagination must happen in the frontend.
+
 ## External API
  External at:
 https://my-json-server.typicode.com/sorryb/tech-shop-angular

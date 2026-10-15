@@ -1,0 +1,53 @@
+{
+  "orderedProducts": [
+    {
+      "product": {
+        "id": 12,
+        "img": "assets/food/steak/2.jpg",
+        "ingredients": [
+          "Marinade"
+        ],
+        "price": 16.59,
+        "name": "Tenderloin Steak",
+        "reviewNumber": 516,
+        "reviewStar": 3.72,
+        "size": "350 g",
+        "productType": "CLOUD"
+      },
+      "quantity": 5
+    },
+    {
+      "product": {
+        "id": 11,
+        "img": "assets/food/steak/1.jpg",
+        "ingredients": [
+          "Butter",
+          "Tomatoes"
+        ],
+        "price": 9.65,
+        "name": "Ribeye Steak",
+        "reviewNumber": 996,
+        "reviewStar": 3.59,
+        "size": "234 g",
+        "productType": "CLOUD"
+      },
+      "quantity": 1
+    }
+  ],
+  "name": "Some name order",
+  "comment": "SOme comment",
+  "table": 3,
+  "orderPaymentSummaryExtraFee": {
+    "subtotal": 92.6,
+    "serviceChargePercentage": 10,
+    "vatRatePercentage": 19,
+    "vatRate": 19.35,
+    "serviceCharge": 9.26,
+    "total": 133.71,
+    "paymentFee": 12.5
+  },
+  "orderStatus": "ORDER_ACCEPTED",
+  "orderDateUnix": 1670331456,
+  "id": "DD579F76",
+  "userId": "bf4cb37b-274d-49eb-a215-06ed5a6cff86"
+}

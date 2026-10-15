@@ -1,0 +1,56 @@
+{
+  "orderedProducts": [
+    {
+      "product": {
+        "id": 1,
+        "img": "assets/food/pizza/1.jpg",
+        "ingredients": [
+          "Basil",
+          "Fresh Tomato"
+        ],
+        "price": 17.84,
+        "name": "Cheese Pizza",
+        "reviewNumber": 860,
+        "reviewStar": 3.89,
+        "size": "403 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 3
+    },
+    {
+      "product": {
+        "id": 2,
+        "img": "assets/food/pizza/2.jpg",
+        "ingredients": [
+          "Chicken",
+          "Cream Sauce",
+          "Sweet Corn",
+          "Fresh Tomato",
+          "Baby Spinach"
+        ],
+        "price": 5.88,
+        "name": "Veggie Pizza",
+        "reviewNumber": 148,
+        "reviewStar": 3.55,
+        "size": "302 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 3
+    }
+  ],
+  "name": "Some name",
+  "comment": "Some description",
+  "table": 3,
+  "orderPaymentSummaryExtraFee": {
+    "subtotal": 71.16,
+    "serviceChargePercentage": 10,
+    "vatRatePercentage": 19,
+    "vatRate": 14.87,
+    "serviceCharge": 7.12,
+    "total": 95.65,
+    "paymentFee": 2.5
+  },
+  "orderStatus": "ORDER_PROCESSING",
+  "orderDateUnix": 1668778294,
+  "id": "51DD591A"
+}

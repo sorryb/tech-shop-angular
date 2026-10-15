@@ -1,0 +1,77 @@
+{
+  "orderedProducts": [
+    {
+      "product": {
+        "id": 3,
+        "img": "assets/food/pizza/3.jpg",
+        "ingredients": [
+          "Baby Spinach",
+          "Basil",
+          "Cream Sauce",
+          "Fresh Tomato",
+          "Chicken"
+        ],
+        "price": 9.98,
+        "name": "Pepperoni Pizza",
+        "reviewNumber": 994,
+        "reviewStar": 3.76,
+        "size": "486 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 2
+    },
+    {
+      "product": {
+        "id": 2,
+        "img": "assets/food/pizza/2.jpg",
+        "ingredients": [
+          "Chicken",
+          "Cream Sauce",
+          "Sweet Corn",
+          "Fresh Tomato",
+          "Baby Spinach"
+        ],
+        "price": 5.88,
+        "name": "Veggie Pizza",
+        "reviewNumber": 148,
+        "reviewStar": 3.55,
+        "size": "302 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 6
+    },
+    {
+      "product": {
+        "id": 1,
+        "img": "assets/food/pizza/1.jpg",
+        "ingredients": [
+          "Basil",
+          "Fresh Tomato"
+        ],
+        "price": 17.84,
+        "name": "Cheese Pizza",
+        "reviewNumber": 860,
+        "reviewStar": 3.89,
+        "size": "403 g",
+        "productType": "FRONT-END"
+      },
+      "quantity": 8
+    }
+  ],
+  "name": "First Tesh Order Cloud",
+  "comment": "Some comment ",
+  "table": 3,
+  "orderPaymentSummaryExtraFee": {
+    "subtotal": 197.96,
+    "serviceChargePercentage": 10,
+    "vatRatePercentage": 19,
+    "vatRate": 41.37,
+    "serviceCharge": 19.8,
+    "total": 271.63,
+    "paymentFee": 12.5
+  },
+  "orderStatus": "ORDER_PROCESSING",
+  "orderDateUnix": 1669215016,
+  "id": "2FF69B73",
+  "userId": "bf4cb37b-274d-49eb-a215-06ed5a6cff86"
+}

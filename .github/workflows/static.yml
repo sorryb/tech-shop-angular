@@ -38,6 +38,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Generate static API data
+        run: node apps/tech-shop-static-api/generate-static-data.mjs
+
       - name: Build Angular apps
         run: |
           npx nx build food-shop --configuration production --base-href "${{ steps.pages.outputs.base_path }}/food-shop/"
@@ -49,9 +52,17 @@ jobs:
           mkdir -p dist/pages/food-shop
           mkdir -p dist/pages/food-shop-backoffice
           mkdir -p dist/pages/tech-shop-welcome
+          mkdir -p dist/pages/tech-shop-static-api/api/order
           cp -R dist/apps/food-shop/. dist/pages/food-shop/
           cp -R dist/apps/food-shop-backoffice/. dist/pages/food-shop-backoffice/
           cp -R dist/apps/tech-shop-welcome/. dist/pages/tech-shop-welcome/
+          cp apps/tech-shop-static-api/data/config.json dist/pages/tech-shop-static-api/api/config
+          cp apps/tech-shop-static-api/data/product.json dist/pages/tech-shop-static-api/api/product
+          cp apps/tech-shop-static-api/data/categories.json dist/pages/tech-shop-static-api/api/categories
+          cp apps/tech-shop-static-api/data/order.json dist/pages/tech-shop-static-api/api/order
+          for order in apps/tech-shop-static-api/data/orders/*.json; do
+            cp "$order" "dist/pages/tech-shop-static-api/api/order/$(basename "$order" .json)"
+          done
 
       - name: Upload apps artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,9 +1,17 @@
+// {
+//   "/api": {
+//     "target": "http://localhost:3000",
+//     "secure": false,
+//     "pathRewrite": {
+//       "^/api": ""
+//     }
+//   }
+// }
+
+// this is fot Azure SWA CLI local as json server, to avoid CORS issues
 {
   "/api": {
-    "target": "http://localhost:3000",
-    "secure": false,
-    "pathRewrite": {
-      "^/api": ""
-    }
+    "target": "http://localhost:4280",
+    "secure": false
   }
 }
